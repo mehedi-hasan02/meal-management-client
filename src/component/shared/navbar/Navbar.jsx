@@ -5,8 +5,10 @@ import {
     Typography,
     Button,
     IconButton,
+    Avatar,
 } from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Link } from "react-router-dom";
 
 const Navigation = () => {
     const [openNav, setOpenNav] = React.useState(false);
@@ -21,17 +23,17 @@ const Navigation = () => {
             <Typography
                 as="li"
                 variant="small"
-                color="blue-gray"
+                color="white"
                 className="p-1 font-normal"
             >
-                <a href="#" className="flex items-center">
-                    Pages
-                </a>
+                <Link to='/' className="flex items-center">
+                    Home
+                </Link>
             </Typography>
             <Typography
                 as="li"
                 variant="small"
-                color="blue-gray"
+                color="white"
                 className="p-1 font-normal"
             >
                 <a href="#" className="flex items-center">
@@ -41,7 +43,7 @@ const Navigation = () => {
             <Typography
                 as="li"
                 variant="small"
-                color="blue-gray"
+                color="white"
                 className="p-1 font-normal"
             >
                 <a href="#" className="flex items-center">
@@ -51,7 +53,7 @@ const Navigation = () => {
             <Typography
                 as="li"
                 variant="small"
-                color="blue-gray"
+                color="white"
                 className="p-1 font-normal"
             >
                 <a href="#" className="flex items-center">
@@ -62,9 +64,9 @@ const Navigation = () => {
     );
     return (
         <div>
-            <div className="-m-6 max-h-[768px] w-[calc(100%+48px)] overflow-scroll">
-                <Navbar className="sticky top-0 z-10 h-max max-w-full bg-gray-100 rounded-none px-4 py-2 lg:px-8 lg:py-4">
-                    <div className="flex items-center justify-between text-blue-gray-900">
+            <div className=" max-h-[768px] w-[calc(100%+48px)] overflow-scroll">
+                <Navbar className="sticky top-0 z-10 h-max max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-1 bg-[#217b7e] ">
+                    <div className="flex items-center justify-between text-white">
                         <Typography
                             as="a"
                             href="#"
@@ -78,7 +80,9 @@ const Navigation = () => {
                             size="sm"
                             className="hidden lg:inline-block"
                         >
-                            <span>Get started</span>
+                            <span>
+                                <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar" variant="rounded"/>
+                            </span>
                         </Button>
                         <IconButton
                             variant="text"
@@ -95,7 +99,9 @@ const Navigation = () => {
                     <Collapse open={openNav}>
                         {navList}
                         <Button fullWidth variant="gradient" size="sm" className="">
-                            <span>Get started</span>
+                            <span>
+                                <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar" />
+                            </span>
                         </Button>
                     </Collapse>
                 </Navbar>
