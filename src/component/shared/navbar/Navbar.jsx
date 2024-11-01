@@ -30,58 +30,29 @@ const Navigation = () => {
                     Home
                 </Link>
             </Typography>
-            <Typography
-                as="li"
-                variant="small"
-                color="white"
-                className="p-1 font-normal"
-            >
-                <a href="#" className="flex items-center">
-                    Account
-                </a>
-            </Typography>
-            <Typography
-                as="li"
-                variant="small"
-                color="white"
-                className="p-1 font-normal"
-            >
-                <a href="#" className="flex items-center">
-                    Blocks
-                </a>
-            </Typography>
-            <Typography
-                as="li"
-                variant="small"
-                color="white"
-                className="p-1 font-normal"
-            >
-                <a href="#" className="flex items-center">
-                    Docs
-                </a>
-            </Typography>
         </ul>
     );
     return (
         <div>
-            <div className=" max-h-[768px] w-[calc(100%+48px)] overflow-scroll">
+            <div className=" max-h-[768px]  overflow-scroll">
                 <Navbar className="sticky top-0 z-10 h-max max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-1 bg-[#217b7e] ">
                     <div className="flex items-center justify-between text-white">
                         <Typography
                             as="a"
-                            href="#"
                             className="mr-4 cursor-pointer py-1.5 font-medium"
                         >
-                            Material Tailwind
+                            <Link to='/' className="text-[20px] font-semibold">
+                                Foodi Track
+                            </Link>
                         </Typography>
                         <div className="mr-4 hidden lg:block">{navList}</div>
                         <Button
                             variant="gradient"
                             size="sm"
-                            className="hidden lg:inline-block"
+                            className="hidden lg:inline-block p-0"
                         >
-                            <span>
-                                <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar" variant="rounded"/>
+                            <span className="">
+                                <Avatar className="p-0" src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar" variant="rounded" />
                             </span>
                         </Button>
                         <IconButton
@@ -100,7 +71,7 @@ const Navigation = () => {
                         {navList}
                         <Button fullWidth variant="gradient" size="sm" className="">
                             <span>
-                                <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar" />
+                                <Avatar className="" src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar" variant="rounded" />
                             </span>
                         </Button>
                     </Collapse>
