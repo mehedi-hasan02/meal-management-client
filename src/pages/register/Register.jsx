@@ -11,7 +11,9 @@ import {
     Typography,
 } from "@material-tailwind/react";
 
-const Login = () => {
+
+
+const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
     const {
         register,
@@ -22,11 +24,10 @@ const Login = () => {
 
     const onSubmit = (data) => {
         const { email, password } = data;
-        console.log(email,password);
+        console.log(email, password);
 
         reset();
     }
-
 
     return (
         <div style={{ height: `calc(100vh - 58px)` }} className=" lg:p-20 lg:bg-blue-gray-300" >
@@ -37,13 +38,30 @@ const Login = () => {
                 <div>
                     <Card color="transparent" shadow={false}>
                         <Typography variant="h4" color="blue-gray">
-                            Sign In
+                            Sign Up
                         </Typography>
                         <Typography color="gray" className="mt-1 font-normal">
-                            Nice to meet you! Enter your details to Sign In.
+                            Nice to meet you! Enter your details to Sign Up.
                         </Typography>
                         <form onSubmit={handleSubmit(onSubmit)} className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
                             <div className="mb-1 flex flex-col gap-6">
+                                <div>
+                                    <Typography variant="h6" color="blue-gray" className="mb-3">
+                                        Your Name
+                                    </Typography>
+                                    <Input
+                                        type="text"
+                                        name="name"
+                                        size="lg"
+                                        placeholder="Your Name"
+                                        className="!border-t-blue-gray-200 focus:!border-t-gray-900"
+                                        labelProps={{
+                                            className: "before:content-none after:content-none",
+                                        }}
+                                        {...register("name", { required: true })}
+                                    />
+                                    {errors.name && <span className="text-red-500">This field is required</span>}
+                                </div>
                                 <div>
                                     <Typography variant="h6" color="blue-gray" className="mb-3">
                                         Your Email
@@ -86,12 +104,12 @@ const Login = () => {
                                 </div>
                             </div>
                             <Button type="submit" className="mt-6" fullWidth>
-                                Sign In
+                                Sign Up
                             </Button>
                             <Typography color="gray" className="mt-4 text-center font-normal">
-                                Don't have an account?{" "}
-                                <Link to='/register' className="font-medium text-gray-900">
-                                    Sign Up
+                                Already have an account?{" "}
+                                <Link to='/login' className="font-medium text-gray-900">
+                                    Sign In
                                 </Link>
                             </Typography>
                         </form>
@@ -102,4 +120,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;
