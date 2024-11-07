@@ -9,12 +9,14 @@ import {
     Input,
     Button,
     Typography,
+    Radio,
 } from "@material-tailwind/react";
 
 
 
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
+    const [userType, setUserType] = useState("admin");
     const {
         register,
         handleSubmit,
@@ -102,6 +104,44 @@ const Register = () => {
                                     </div>
                                     {errors.password && <span className="text-red-500">This field is required</span>}
                                 </div>
+                                <div className="flex items-center">
+                                    <div>
+                                        <h3 className="text-lg text-black">Sign Up as a</h3>
+                                    </div>
+                                    <div className="flex gap-10">
+                                        <Radio
+                                            onClick={() => setUserType("admin")}
+                                            name="type"
+                                            label="Admin"
+                                            defaultChecked
+                                        />
+                                        <Radio
+                                            onClick={() => setUserType("user")}
+                                            name="type"
+                                            label="User"
+                                        />
+                                    </div>
+                                </div>
+                                {
+                                    userType == 'user' &&
+                                    <div>
+                                        <Typography variant="h6" color="blue-gray" className="mb-3">
+                                            Username
+                                        </Typography>
+                                        <Input
+                                            type="text"
+                                            name="name"
+                                            size="lg"
+                                            placeholder="Username"
+                                            className="!border-t-blue-gray-200 focus:!border-t-gray-900"
+                                            labelProps={{
+                                                className: "before:content-none after:content-none",
+                                            }}
+                                            {...register("username", { required: true })}
+                                        />
+                                        {errors.username && <span className="text-red-500">This field is required</span>}
+                                    </div>
+                                }
                             </div>
                             <Button type="submit" className="mt-6" fullWidth>
                                 Sign Up
