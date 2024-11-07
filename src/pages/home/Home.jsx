@@ -1,7 +1,11 @@
+import DataTable from "./data table/DataTable";
+
 const Home = () => {
     return (
         <div>
-            <h1>This is home</h1>
+            <div>
+                <DataTable/>
+            </div>
         </div>
     );
 };
