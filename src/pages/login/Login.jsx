@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import loginImg from '../../assets/authentication2.png'
 import loginBgImg from '../../assets/authentication.png'
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import {
     Card,
@@ -10,8 +10,10 @@ import {
     Button,
     Typography,
 } from "@material-tailwind/react";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Login = () => {
+    const {signIn} = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
     const {
         register,
@@ -22,7 +24,11 @@ const Login = () => {
 
     const onSubmit = (data) => {
         const { email, password } = data;
-        console.log(email,password);
+        
+        signIn(email,password)
+        .then(res=>{
+            console.log(res.user);
+        })
 
         reset();
     }

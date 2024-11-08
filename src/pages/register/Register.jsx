@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import loginImg from '../../assets/authentication2.png'
 import loginBgImg from '../../assets/authentication.png'
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import {
     Card,
@@ -11,10 +11,12 @@ import {
     Typography,
     Radio,
 } from "@material-tailwind/react";
+import { AuthContext } from "../../provider/AuthProvider";
 
 
 
 const Register = () => {
+    const {createUser} = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
     const [userType, setUserType] = useState("admin");
     const {
@@ -24,9 +26,14 @@ const Register = () => {
         formState: { errors },
     } = useForm()
 
-    const onSubmit = (data) => {
+    const onSubmit = async(data) => {
         const { email, password } = data;
-        console.log(email, password);
+        
+        const res = await createUser(email,password)
+        console.log(res.user);
+        // .then(res=>{
+        //     console.log(res.data);
+        // })
 
         reset();
     }
