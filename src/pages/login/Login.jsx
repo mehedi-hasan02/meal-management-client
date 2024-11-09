@@ -1,9 +1,11 @@
 import { useForm } from "react-hook-form";
 import loginImg from '../../assets/authentication2.png'
 import loginBgImg from '../../assets/authentication.png'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
     Card,
     Input,
@@ -13,8 +15,9 @@ import {
 import { AuthContext } from "../../provider/AuthProvider";
 
 const Login = () => {
-    const {signIn} = useContext(AuthContext);
+    const { signIn } = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
+    const navigator = useNavigate();
     const {
         register,
         handleSubmit,
@@ -24,11 +27,12 @@ const Login = () => {
 
     const onSubmit = (data) => {
         const { email, password } = data;
-        
-        signIn(email,password)
-        .then(res=>{
-            console.log(res.user);
-        })
+
+        signIn(email, password)
+            .then(() => {
+                toast("Login Successful");
+                navigator('/');
+            })
 
         reset();
     }
@@ -96,7 +100,7 @@ const Login = () => {
                             </Button>
                             <Typography color="gray" className="mt-4 text-center font-normal">
                                 Don't have an account?{" "}
-                                <Link to='/register' className="font-medium text-gray-900">
+                                <Link to='/register' className="font-medium text-blue-900">
                                     Sign Up
                                 </Link>
                             </Typography>
